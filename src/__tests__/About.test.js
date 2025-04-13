@@ -33,12 +33,13 @@ test("renders a <p> element", () => {
   expect(p).toBeInTheDocument();
 });
 
-test("renders a <img> element with the correct attributes", () => {
-  render(<About />);
+  // Fin an element with the "alt" attribute set to "I made this"
 
-  // Find an element with the "alt" attribute set to "I made this"
-  const img = screen.queryByAltText("I made this");
-
-  expect(img).toBeInTheDocument();
-  expect(img).toHaveAttribute("src", image);
-});
+  test("renders a <img> element with the correct attributes", () => {
+    render(<About imageSrc="test-image.jpg" />);
+    
+    const img = screen.queryByAltText("I made this");
+  
+    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute("src", "test-image.jpg");
+  });
